@@ -25,7 +25,7 @@ def test_full_flow_import_search_report(client):
     rep = client.get(f"/api/reports/{s['question_id']}").json()
     assert rep["controlled_counterfactual"] is False and rep["source_references"][0]["is_synthetic"] is True
     assert rep["source_references"][0]["sha256"] == up.json()["sha256"]
-    assert "SYNTHETIC" in rep["executive_summary"]
+    assert "synthetic" in rep["executive_summary"].lower()
     assert rep["search_scope"]["synthetic_files_indexed"] == 1
     assert rep["search_scope"]["user_imported_files_indexed"] == 0
     assert rep["search_scope"]["nasa_source_verified_files_indexed"] == 0

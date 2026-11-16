@@ -15,9 +15,8 @@ if (-not (Test-Path "backend\.venv")) { python -m venv backend\.venv }
 & backend\.venv\Scripts\python.exe -m pip install --upgrade pip
 & backend\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
 
-Set-Location frontend
+Set-Location $root
 npm install
-Set-Location ..
 
 if (-not (Test-Path ".env")) { Copy-Item .env.example .env }
 Write-Host "Setup finished. Start the app with: powershell -ExecutionPolicy Bypass -File scripts\start_windows.ps1" -ForegroundColor Green

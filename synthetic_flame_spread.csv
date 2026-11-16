@@ -1,9 +1,0 @@
-Run ID,Material,Oxygen concentration (%),Pressure (kPa),Flow velocity (cm/s),Flame spread rate (mm/s),Sample thickness (mm),Notes
-S-001,SYNTHETIC-PMMA,21,101.3,5,1.20,1.0,synthetic row
-S-002,SYNTHETIC-PMMA,21,101.3,10,1.55,1.0,synthetic row
-S-003,SYNTHETIC-PMMA,30,101.3,5,2.40,1.0,synthetic row
-S-004,SYNTHETIC-PMMA,30,70.0,5,,1.0,spread rate missing on purpose
-S-005,SYNTHETIC-PMMA,21,70.0,10,-999,1.0,sentinel candidate on purpose
-S-006,SYNTHETIC-PMMA,25,101.3
-S-007,SYNTHETIC-PMMA,25,101.3,5,1.90,1.0,"note with a comma, and
-a line break",extra-cell-on-purpose
