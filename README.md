@@ -1,40 +1,49 @@
-# Flame in Freefall (hackathon MVP)
+# IgnisScope — Microgravity Combustion Evidence Explorer
 
-A research-support tool that imports microgravity combustion CSV data with full provenance, searches it for
-flame-spread evidence, shows what is missing, and writes a Mission Evidence Brief (PDF and JSON).
+A research-support platform for exploring microgravity combustion evidence, tracking experimental provenance, identifying evidence gaps, and generating traceable research briefs.
 
 It is not a certified fire-risk predictor and is not endorsed by NASA. See `docs/SCIENTIFIC_LIMITATIONS.md`.
 
 ## Install on Windows
-1. Install Python 3.11+ (tick "Add to PATH") and Node.js 18+ LTS.
-2. Open PowerShell in this folder, then:
-```
+
+1. Install Python 3.11+ and Node.js 18+ LTS.
+2. Open PowerShell in this folder, then run:
+
+```powershell
 powershell -ExecutionPolicy Bypass -File scripts\setup_windows.ps1
 powershell -ExecutionPolicy Bypass -File scripts\start_windows.ps1
 ```
-The browser opens at http://localhost:5173. API docs: http://localhost:8000/docs.
+
+The browser opens at http://localhost:5173. API documentation is at http://localhost:8000/docs.
 
 ## Try it
-1. Dashboard: "Load synthetic demo" (labeled SYNTHETIC - NOT NASA DATA).
-2. Evidence search: "Use example question", "Interpret question", edit the query, "Search evidence".
-3. Evidence gaps, then Mission evidence brief: download the PDF or JSON.
+
+1. On the dashboard, load the synthetic demo dataset.
+2. In Evidence Search, use the example question, interpret it, edit the query, and search the evidence.
+3. Review evidence gaps.
+4. Generate a Mission Evidence Brief in PDF or JSON.
+
+**Data notice:** `data/synthetic/synthetic_flame_spread.csv` contains synthetic demonstration data, not NASA experimental measurements.
 
 ## Use real NASA data
-1. Open https://psi.nasa.gov/physci/repo/data/ in your browser and find an investigation about flame spread
-   (for example a SAFFIRE investigation). Check the investigation name and ID on the page yourself.
-2. Download a CSV. Import data page: create the investigation (tick "checked against the official NASA page"
-   only if you did), paste the page URL, upload the CSV.
-3. Check the column table after import. Columns are recognised by header name only. If a unit is missing
-   from a header, add it under "Unit overrides" (stored as USER_SUPPLIED).
+
+1. Visit https://psi.nasa.gov/physci/repo/data/ and locate a relevant investigation, such as a SAFFIRE investigation.
+2. Verify the investigation name and ID on the official page yourself.
+3. Download an appropriate CSV and import it through the application.
+4. Mark an official-page check as completed only if you personally performed that check; then provide the source page URL and upload the CSV.
+5. Review the imported column table. Columns are recognized by header name. Missing units can be entered through Unit overrides and are stored as `USER_SUPPLIED`.
+
+The application does not independently verify NASA records, source URLs, or page contents, and it does not retain page-level citations.
 
 ## Tests
-```
+
+```powershell
 powershell -ExecutionPolicy Bypass -File scripts\run_tests_windows.ps1
 ```
 
-## Layout
-`backend/app`: database.py, models.py, ingestion.py, variables.py, evidence.py, gap_analysis.py, reports.py, main.py.
-`frontend/src`: pages for the six sections. `data/raw`: immutable copies of imported files. `docs/`: provenance, limits, status.
+## Project layout
 
-## Backup
-Copy `data\flame.db` and `data\raw\` while the backend is stopped.
+- `backend/app/`: API, ingestion, evidence search, gap analysis, and reports.
+- `src/`: web application.
+- `data/`: raw-data placeholder and synthetic demo data.
+- `docs/`: provenance, implementation status, and scientific limitations.
